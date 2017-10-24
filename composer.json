@@ -1,0 +1,26 @@
+{
+  "name": "esp4ik/yii2-sms-sender",
+  "description": "SMS sender extension for the Yii 2 framework",
+  "keywords": ["yii2", "sms", "sender"],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/esp4ik/yii2-sms-sender/issues",
+    "source": "https://github.com/esp4ik/yii2-sms-sender"
+  },
+  "authors": [
+    {
+      "name": "Evgeny Voronets",
+      "email": "voronets.evgeny@gmail.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0.0",
+    "yiisoft/yii2-httpclient": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "esp4ik\\smssender\\": "src/"
+    }
+  }
+}
