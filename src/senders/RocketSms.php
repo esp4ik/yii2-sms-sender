@@ -27,12 +27,19 @@ class RocketSms extends Sender
     public $password = null;
 
     /**
+     * @var bool
+     */
+    public $priority = true;
+
+    /**
      * RocketSms constructor.
      * @param array $config
      * @throws InvalidConfigException
      */
     public function __construct(array $config = [])
     {
+        parent::__construct($config);
+
         if ($this->username === null) {
             $class = self::className();
             throw new InvalidConfigException("Property {$class}::username must be specified");
@@ -42,8 +49,6 @@ class RocketSms extends Sender
             $class = self::className();
             throw new InvalidConfigException("Property {$class}::password must be specified");
         }
-
-        parent::__construct($config);
     }
 
     /**
@@ -67,6 +72,7 @@ class RocketSms extends Sender
             'password' => md5($this->password),
             'phone' => $message->getTo(),
             'text' => $message->getText(),
+            'priority' => (bool) $this->priority,
         ];
 
         $from = $message->getFrom();
