@@ -15,7 +15,7 @@ interface MessageInterface
 
     /**
      * @param $text
-     * @return void
+     * @return $this
      */
     public function setText($text);
 
@@ -26,7 +26,7 @@ interface MessageInterface
 
     /**
      * @param $to
-     * @return void
+     * @return $this
      */
     public function setTo($to);
 
@@ -37,7 +37,7 @@ interface MessageInterface
 
     /**
      * @param $from
-     * @return void
+     * @return $this
      */
     public function setFrom($from);
 
@@ -48,13 +48,13 @@ interface MessageInterface
 
     /**
      * @param SenderInterface $sender
-     * @return void
+     * @return $this
      */
     public function setSender(SenderInterface $sender);
 
     /**
      * @param SenderInterface|null $sender
-     * @return mixed
+     * @return bool
      */
     public function send(SenderInterface $sender = null);
 }

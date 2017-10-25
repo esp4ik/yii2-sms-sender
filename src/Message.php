@@ -29,10 +29,13 @@ class Message extends Object implements MessageInterface
 
     /**
      * @param $text
+     * @return $this
      */
     public function setText($text)
     {
         $this->text = $text;
+
+        return $this;
     }
 
     /**
@@ -45,10 +48,13 @@ class Message extends Object implements MessageInterface
 
     /**
      * @param $to
+     * @return $this
      */
     public function setTo($to)
     {
         $this->to = $to;
+
+        return $this;
     }
 
     /**
@@ -61,10 +67,13 @@ class Message extends Object implements MessageInterface
 
     /**
      * @param $from
+     * @return $this
      */
     public function setFrom($from)
     {
         $this->from = $from;
+
+        return $this;
     }
 
     /**
@@ -77,10 +86,13 @@ class Message extends Object implements MessageInterface
 
     /**
      * @param SenderInterface $sender
+     * @return $this
      */
     public function setSender(SenderInterface $sender)
     {
         $this->sender = $sender;
+
+        return $this;
     }
 
     /**
