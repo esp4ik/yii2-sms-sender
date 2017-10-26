@@ -5,7 +5,6 @@ namespace esp4ik\smssender\senders;
 use esp4ik\smssender\MessageInterface;
 use esp4ik\smssender\Sender;
 use yii\base\InvalidConfigException;
-use yii\httpclient\Client;
 use yii\httpclient\Response;
 
 /**
@@ -81,10 +80,9 @@ class RocketSms extends Sender
             $data['sender'] = $from;
         }
 
-        $client = new Client();
-
         /** @var Response $response */
-        $response = $client->createRequest()
+        $response = $this->getHttpClient()
+            ->createRequest()
             ->setMethod('post')
             ->setUrl($this->getSendMessageApiUrl())
             ->setData($data)

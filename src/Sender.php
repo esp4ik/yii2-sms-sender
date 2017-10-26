@@ -4,6 +4,7 @@ namespace esp4ik\smssender;
 
 use Yii;
 use yii\base\Component;
+use yii\httpclient\Client;
 
 abstract class Sender extends Component implements SenderInterface
 {
@@ -16,6 +17,16 @@ abstract class Sender extends Component implements SenderInterface
      * @var array message config
      */
     public $messageConfig = [];
+
+    /**
+     * @var string Transport|array|string|callable HTTP message transport, @see yii\httpclient\Client
+     */
+    public $transport = 'yii\httpclient\CurlTransport';
+
+    /**
+     * @var Client
+     */
+    private $httpClient;
 
     /**
      * @return MessageInterface|object
@@ -48,5 +59,20 @@ abstract class Sender extends Component implements SenderInterface
         }
 
         return $sentCount;
+    }
+
+    /**
+     * @return Client
+     */
+    public function getHttpClient()
+    {
+        if ($this->httpClient instanceof Client) {
+            return $this->httpClient;
+        }
+
+        $this->httpClient = new Client();
+        $this->httpClient->setTransport($this->transport);
+
+        return $this->httpClient;
     }
 }
